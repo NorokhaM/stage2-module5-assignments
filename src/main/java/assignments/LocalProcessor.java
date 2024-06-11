@@ -3,7 +3,6 @@ package assignments;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,22 +16,21 @@ import lombok.Setter;
 @Setter
 public class LocalProcessor {
     private String processorName;
-    private Long period = 10_000_000_000_000L;
-    protected String processorVersion;
-    private Integer valueOfCheap;
+    private long period = 10_000_000_000_000L;
+    private String processorVersion;
+    private int valueOfCheap;
     private Scanner informationScanner;
     private static List<String> stringArrayList = new ArrayList<>();
     private StringBuilder builder;
 
-    public LocalProcessor(String processorName, Long period, String processorVersion, Integer valueOfCheap,
-                          Scanner informationscanner, List<String> stringArrayList) {
-        this.processorName= processorName;
+    public LocalProcessor(String processorName, long period, String processorVersion, int valueOfCheap,
+                          Scanner informationScanner, List<String> stringArrayList) {
+        this.processorName = processorName;
         this.period = period;
         this.processorVersion = processorVersion;
         this.valueOfCheap = valueOfCheap;
-        this.informationScanner = informationscanner;
-        LocalProcessor.stringArrayList = stringArrayList;
-        builder = new StringBuilder(processorName);
+        this.informationScanner = informationScanner;
+        LocalProcessor.stringArrayList = new ArrayList<>(stringArrayList);
     }
 
     public LocalProcessor() {
@@ -52,10 +50,11 @@ public class LocalProcessor {
 
     @FullNameProcessorGeneratorAnnotation
     public String fullNameProcessorGenerator(List<String> stringList) {
-        for (String s : stringList) {
-            builder.append(s).append(" ");
+        builder = new StringBuilder(processorName);
+        for(String string : stringList) {
+            builder.append(string).append(" ");
         }
-        processorName=builder.toString();
+        processorName = builder.toString();
         return processorName;
     }
 

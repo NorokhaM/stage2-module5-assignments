@@ -19,7 +19,7 @@ public class LocalProcessor {
     private String processorName;
     private Long period = 10_000_000_000_000L;
     protected String processorVersion;
-    private Integer valueofCheap;
+    private Integer valueOfCheap;
     private Scanner informationScanner;
     private static List<String> stringArrayList = new ArrayList<>();
     private StringBuilder builder;
@@ -29,10 +29,10 @@ public class LocalProcessor {
         this.processorName= processorName;
         this.period = period;
         this.processorVersion = processorVersion;
-        this.valueofCheap = valueOfCheap;
+        this.valueOfCheap = valueOfCheap;
         this.informationScanner = informationscanner;
         LocalProcessor.stringArrayList = stringArrayList;
-        builder = new StringBuilder();
+        builder = new StringBuilder(processorName);
     }
 
     public LocalProcessor() {
